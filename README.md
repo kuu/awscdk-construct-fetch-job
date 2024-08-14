@@ -12,6 +12,8 @@ CDK Construct for scheduling a cron job that periodically accesses a MediaTialor
   * EventBridge rule for periodically running the state-machine
   * SNS Topic for notifiying any errors
 
+  ![Architecture Diagram](./resources.png)
+
 ## Install
 [![NPM](https://nodei.co/npm/awscdk-construct-fetch-job.png?mini=true)](https://nodei.co/npm/awscdk-construct-fetch-job/)
 
