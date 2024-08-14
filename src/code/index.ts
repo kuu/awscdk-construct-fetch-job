@@ -1,6 +1,6 @@
-import { SNSClient, PublishCommand } from "@aws-sdk/client-sns";
-import fetch from 'node-fetch'; // For making a request to the origin
+import { SNSClient, PublishCommand } from '@aws-sdk/client-sns';
 import * as HLS from 'hls-parser'; // For reading/writing the HLS manifest
+import fetch from 'node-fetch'; // For making a request to the origin
 
 const client = new SNSClient({ region: process.env.REGION });
 const SESSION_INITIALIZATION_URL = process.env.SESSION_INITIALIZATION_URL as string;
@@ -19,7 +19,7 @@ export async function handler(event: any) {
       url = manifestUrl;
     }
   }
-  console.log(`Fetching the manifest: ${url}`)
+  console.log(`Fetching the manifest: ${url}`);
   const rendition = await getManifest(url);
   if (!rendition) {
     const message = trimMessage(`
@@ -55,7 +55,7 @@ async function createSession(sessionInitializationUrl: string): Promise<string> 
     console.error(`Failed to create a session: ${res.status} ${res.statusText} - ${sessionInitializationUrl}`);
     return '';
   }
-  const {manifestUrl} = await res.json() as { manifestUrl?: string };
+  const { manifestUrl } = await res.json() as { manifestUrl?: string };
 
   return manifestUrl ? new URL(manifestUrl, sessionInitializationUrl).href : '';
 }
@@ -78,6 +78,7 @@ async function getRendtionUrl(masterPlaylistUrl: string, index: number): Promise
   return getAbsoluteUrl(masterPlaylistUrl, masterPlaylist.variants[index].uri);
 }
 
+/*
 async function getRendition(mediaPlaylistUrl: string): Promise<HLS.types.Playlist | undefined> {
   const mediaPlaylist = await getPlaylist(mediaPlaylistUrl);
   if (!mediaPlaylist) {
@@ -86,13 +87,14 @@ async function getRendition(mediaPlaylistUrl: string): Promise<HLS.types.Playlis
   }
   return mediaPlaylist;
 }
+*/
 
 function getAbsoluteUrl(parent: string, current: string): string {
   try {
     const url = new URL(current, parent);
     return url.href;
   } catch (e) {
-    console.error(`Failed to parse the URL: ${parent} - ${current}`)
+    console.error(`Failed to parse the URL: ${parent} - ${current}`);
   }
   return current;
 }
@@ -100,16 +102,16 @@ function getAbsoluteUrl(parent: string, current: string): string {
 async function getManifest(url: string): Promise<string | undefined> {
   const res = await fetch(url);
   if (!res.ok) {
-    console.error(`Failed to fetch the manifest: ${res.status} ${res.statusText} - ${url}`)
+    console.error(`Failed to fetch the manifest: ${res.status} ${res.statusText} - ${url}`);
     return undefined;
   }
-  return await res.text();
+  return res.text();
 }
 
 async function getPlaylist(url: string): Promise<HLS.types.Playlist | undefined> {
   const res = await fetch(url);
   if (!res.ok) {
-    console.error(`Failed to fetch the HLS manifest: ${res.status} ${res.statusText} - ${url}`)
+    console.error(`Failed to fetch the HLS manifest: ${res.status} ${res.statusText} - ${url}`);
     return undefined;
   }
   // Parse the HLS manifest

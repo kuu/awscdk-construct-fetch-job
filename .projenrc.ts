@@ -20,6 +20,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
   licensed: true,
 
   deps: ['aws-cdk-lib', 'constructs'],
+  bundledDeps: [
+    '@aws-sdk/client-sns',
+    'hls-parser',
+    'node-fetch',
+  ],
   description: 'AWS CDK Construct for scheduling a cron job that periodically accesses a MediaTailor endpoint',
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */

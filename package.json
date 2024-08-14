@@ -66,6 +66,11 @@
     "hls-parser": "^0.13.3",
     "node-fetch": "^3.3.2"
   },
+  "bundledDependencies": [
+    "@aws-sdk/client-sns",
+    "hls-parser",
+    "node-fetch"
+  ],
   "keywords": [
     "EventBridge",
     "Lambda",
