@@ -85,6 +85,18 @@
       "type": "build"
     },
     {
+      "name": "@aws-sdk/client-sns",
+      "type": "bundled"
+    },
+    {
+      "name": "hls-parser",
+      "type": "bundled"
+    },
+    {
+      "name": "node-fetch",
+      "type": "bundled"
+    },
+    {
       "name": "aws-cdk-lib",
       "version": "^2.151.0",
       "type": "peer"
