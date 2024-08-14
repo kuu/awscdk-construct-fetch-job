@@ -3,9 +3,11 @@
 
 CDK Construct for scheduling a cron job that periodically accesses a MediaTialor endpoint
 * Input:
-  * Email address for the notification
-  * List of input attachements to be switched in a toggle manner
-  * Switch interval (minutes)
+  * MediaTailor session initialization URL
+  * Cron schedule expression
+  * Fetch interval (seconds)
+  * Fetch count per cron job
+  * Email address for nortifying errors
 * Output:
   * Lambda function for fetching MediaTailor HLS/DASH endpoint
   * StepFunctions state-machine for invoking the Lambda function with a specified interval/count
@@ -18,6 +20,7 @@ CDK Construct for scheduling a cron job that periodically accesses a MediaTialor
 [![NPM](https://nodei.co/npm/awscdk-construct-fetch-job.png?mini=true)](https://nodei.co/npm/awscdk-construct-fetch-job/)
 
 ## Usage
+Below is an example of deploying a cron job that runs at 11:59 every Saturday. Once the job gets started, it fetches the manifest every 2 seconds until it's repeated 30 times.
 ```ts
 import { Stack, StackProps, CfnOutput } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
@@ -30,7 +33,7 @@ export class ExampleStack extends Stack {
     const job = new FetchJob(this, 'FetchSchedule', {
       emailAddr: 'Your email address',
       sessionInitializationUrl: 'MediaTailor session initialization URL',
-      startTime: { hour: '11', minute: '59' }, // Cron pattern
+      startTime: { hour: '11', minute: '59', weekDay: 'SAT' }, // Cron pattern
       intervalInSeconds: 2, // Fetch interval
       fetchCount: 30, // Fetch count per cron job
     });
