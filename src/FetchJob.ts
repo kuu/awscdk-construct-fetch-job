@@ -87,7 +87,7 @@ function adjustStartTime(startTime: CronOptions): CronOptions {
     return startTime;
   }
   const curr = new Date();
-  const override: {year?: '*'; month?: '*'; day?: '*'; hour?: '*'; minute?: '*'} = {};
+  const override: { year?: '*'; month?: '*'; day?: '*'; hour?: '*'; minute?: '*' } = {};
   let year = Number.parseInt(startTime.year ?? '');
   if (Number.isNaN(year)) {
     year = curr.getUTCFullYear();

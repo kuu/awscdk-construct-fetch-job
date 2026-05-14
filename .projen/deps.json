@@ -1,22 +1,26 @@
 {
   "dependencies": [
     {
+      "name": "@stylistic/eslint-plugin",
+      "version": "^2",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
     {
       "name": "@types/node",
-      "version": "^18",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
-      "version": "^7",
+      "version": "^8",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
-      "version": "^7",
+      "version": "^8",
       "type": "build"
     },
     {
@@ -34,7 +38,7 @@
     },
     {
       "name": "eslint",
-      "version": "^8",
+      "version": "^9",
       "type": "build"
     },
     {
@@ -43,7 +47,7 @@
     },
     {
       "name": "jest-junit",
-      "version": "^15",
+      "version": "^17",
       "type": "build"
     },
     {
@@ -61,12 +65,12 @@
     },
     {
       "name": "jsii-rosetta",
-      "version": "~5.4.0",
+      "version": "~5.9.40",
       "type": "build"
     },
     {
       "name": "jsii",
-      "version": "~5.4.0",
+      "version": "~5.9.40",
       "type": "build"
     },
     {
@@ -99,12 +103,12 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "^2.151.0",
+      "version": "^2.254.0",
       "type": "peer"
     },
     {
       "name": "constructs",
-      "version": "^10.0.5",
+      "version": "^10.5.1",
       "type": "peer"
     },
     {
