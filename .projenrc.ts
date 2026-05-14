@@ -2,9 +2,9 @@ import { awscdk } from 'projen';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Kuu Miyazaki',
   authorAddress: 'miyazaqui@gmail.com',
-  cdkVersion: '2.151.0',
+  cdkVersion: '2.254.0',
   defaultReleaseBranch: 'main',
-  jsiiVersion: '~5.4.0',
+  jsiiVersion: '~5.9.40',
   name: 'awscdk-construct-fetch-job',
   projenrcTs: true,
   repositoryUrl: 'https://github.com/kuu/awscdk-construct-fetch-job.git',
